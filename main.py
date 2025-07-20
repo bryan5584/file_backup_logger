@@ -1,16 +1,16 @@
 from backup import BackupManager
 
 if __name__ == "__main__":
-    source = input("Chemin du dossier à sauvegarder : ")
-    destination = input("Chemin de destination de la sauvegarde : ")
-    compress_input = input("Voulez-vous compresser la sauvegarde en ZIP ? (o/n) : ").lower()
-    compress = compress_input == 'o'
+    source = input("Path of the folder to backup: ")
+    destination = input("Backup destination path: ")
+    compress_input = input("Do you want to compress the backup as ZIP? (y/n): ").lower()
+    compress = compress_input == 'y'
 
     manager = BackupManager(source, destination)
     try:
         backup_path, file_count, duration = manager.perform_backup(compress=compress)
-        print(f"Sauvegarde réussie dans : {backup_path}")
-        print(f"Fichiers copiés : {file_count}")
-        print(f"Durée : {duration:.2f} secondes")
+        print(f"Backup successful at: {backup_path}")
+        print(f"Files copied: {file_count}")
+        print(f"Duration: {duration:.2f} seconds")
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
